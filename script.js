@@ -4,12 +4,12 @@ window.addEventListener("load", function(){
     console.log("Page loaded");
     
    
- let form = document.querySelector("form");
-    form.addEventListener("submit", function(event){
-            event.preventDefault();
-        console.log("Form submission cancelled"
-        }
-    });
+let form = document.querySelector("form");
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("Form submission cancelled"
+    }
+  });
 });
 
 function submitForm(){
