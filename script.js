@@ -12,6 +12,7 @@ form.addEventListener("submit", function(event){
   });
 });
 
+
 function submitForm(){
  let pilotName = document.querySelectorf("input[name = pilotName]");
  let copilotName = document.querySelector("input[name = copilotName");
@@ -20,6 +21,32 @@ function submitForm(){
 
     if (pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
         alert("All fields are required.");
+    }
+    if (isNaN(fuelLevel) === true){
+        alert("Please enter a number for the fuel level.");
+    }
+    if (isNaN(cargoMass) === true){
+        alert("Please enter a number for the fuel level.");
+    }
+    
+    document.getElementById("pilotStatus").innerHTML = `${pilotName}`;
+    document.getElementById("copilotStatus").innerHTML = `${copilotName}`;
+    
+    if(fuelLevel < 10000){
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch."
+        document.getElementById("launchStatus").style.color = "red";
+        document.getElementById("faultyItems").style.visibility = "visible"
+        document.getElementById("fuelStatus").innerHTML = "Insufficient fuel for journey."
+    }
+    if(cargoMass > 10000){
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch."
+        document.getElementById("launchStatus").style.color = "red";
+        document.getElementById("faultyItems").style.visibility = "visible"
+        document.getElementById("cargoStatus").innerHTML = "Cargo mass exceeds limit."
+    }
+    if(fuelLevel is > 10000 && cargoMass < 10000){
+         document.getElementById("launchStatus").innerHTML = "Shuttle ready for launch."
+         document.getElementById("launchStatus").style.color = "green";
     }
  }            
             
