@@ -52,6 +52,9 @@ function submitForm(){
          launchStatus.innerHTML = "Shuttle ready for launch."
          launchStatus.style.color = "green";
        }
+  fetch(https://handlers.education.launchcode.org/static/planets.json).then(function(response){
+    //function code
+   });
  }            
             
 // /* This block of code shows how to format the HTML once you fetch some planetary JSON!
