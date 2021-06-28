@@ -7,9 +7,9 @@ window.addEventListener("load", function(){
  form.addEventListener("submit", function(event){
     event.preventDefault();
     console.log("Form submission cancelled");
-    }
+    });
   });
-});
+
 
 
 function submitForm(){
@@ -26,18 +26,12 @@ function submitForm(){
     if (pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
         alert("All fields are required.");
     }
-        if(isNaN(pilotName) === false){
-            alert("Please enter a valid pilot name.");
+        if(isNaN(pilotName) === false || isNaN(copilotName) === false){
+            alert("Please enter a valid name.");
         }
-            if(isNaN(copilotName) === false){
-                alert("Please enter a valiot copilot name.");
-            }
-                if (isNaN(fuelLevel) === true){
-                    alert("Please enter a number for the fuel level.");
+            if (isNaN(fuelLevel) === true || isNaN(cargoMass) === true){
+                alert("Please enter a number.");
                 }
-                     if (isNaN(cargoMass) === true){
-                        alert("Please enter a number for the fuel level.");
-                    }
     
     document.getElementById("pilotStatus").innerHTML = `${pilotName}`;
     document.getElementById("copilotStatus").innerHTML = `${copilotName}`;
@@ -46,7 +40,7 @@ function submitForm(){
         launchStatus.innerHTML = "Shuttle ready for launch."
         launchStatus.style.color = "green";
       }
-        if(< 10000){
+        if(fuelLevel < 10000){
             launchStatus.innerHTML = "Shuttle not ready for launch."
             launchStatus.style.color = "red";
             faultyItems.style.visibility = "visible"
@@ -74,7 +68,7 @@ function submitForm(){
             <img src = "${json.image[4]}">`
     });      
  });     
- 
- document.getElementById("formSubmit").addEventListener("click", function(){
-     submitForm();
- });
+
+document.getElementById("formSubmit").addEventListener("click", function(){
+    submitForm();
+});
