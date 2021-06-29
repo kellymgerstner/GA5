@@ -8,12 +8,12 @@ window.addEventListener("load", function(){
     event.preventDefault();
     console.log("Form submission cancelled");
     });
-  });
+ 
 
 
 
 function submitForm(){
- let pilotName = document.querySelectorf("input[name = pilotName]");
+ let pilotName = document.querySelector("input[name = pilotName]");
  let copilotName = document.querySelector("input[name = copilotName]");
  let fuelLevel = document.querySelector("input[name = fuelLevel]");
  let cargoMass = document.querySelector("input[nme = cargoMass]");
@@ -26,7 +26,7 @@ function submitForm(){
     if (pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
         alert("All fields are required.");
     }
-        if(isString(pilotName) === false || isString(copilotName) === false){
+        if(typeof(pilotName) !== "string" || typeof(copilotName) !== "string"){
             alert("Please enter a valid name.");
         }
             if (isNaN(fuelLevel)|| isNaN(cargoMass)){ 
@@ -57,20 +57,22 @@ function submitForm(){
   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
     response.json().then(function(json){
         let missionTarget =  document.getElementById("missionTarget");
+        console.log(json);
         missionTarget.innerHTML = `
             <h2>Mission Destination</h2>
             <ol>
-                <li>Name: ${json.name[4]}</li>
-                <li>Diameter: ${json.diameter[4]}</li>
-                <li>Star: ${json.star[4]}</li>
-                <li>Distance from Earth: ${json.distance[4]}</li>
-                <li>Number of Moons: ${json.moons[4]}</li>
+                <li>Name: ${json[4].name}</li>
+                <li>Diameter: ${json[4].diameter}</li>
+                <li>Star: ${json[4].star}</li>
+                <li>Distance from Earth: ${json[4].distance}</li>
+                <li>Number of Moons: ${json[4].moons}</li>
             </ol>
-            <img src = "${json.image[4]}">`
+            <img src = "${json[4].image}">`
     });      
  });     
 
 let formSubmit = document.querySelector("button");
 formSubmit.addEventListener("click", function(){
     submitForm();
+});
 });
