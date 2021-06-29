@@ -14,9 +14,9 @@ window.addEventListener("load", function(){
 
 function submitForm(){
  let pilotName = document.querySelectorf("input[name = pilotName]");
- let copilotName = document.querySelector("input[name = copilotName");
+ let copilotName = document.querySelector("input[name = copilotName]");
  let fuelLevel = document.querySelector("input[name = fuelLevel]");
- let cargoMass = document.querySelector("input[nme = cargoMass");
+ let cargoMass = document.querySelector("input[nme = cargoMass]");
 
  let launchStatus = document.getElementById("launchStatus");
  let faultyItems = document.getElementById("faultyItems");
@@ -26,10 +26,10 @@ function submitForm(){
     if (pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
         alert("All fields are required.");
     }
-        if(isNaN(pilotName) === false || isNaN(copilotName) === false){
+        if(isString(pilotName) === false || isString(copilotName) === false){
             alert("Please enter a valid name.");
         }
-            if (isNaN(fuelLevel) === true || isNaN(cargoMass) === true){
+            if (isNaN(fuelLevel)|| isNaN(cargoMass)){ 
                 alert("Please enter a number.");
                 }
     
@@ -52,7 +52,8 @@ function submitForm(){
                 faultyItems.style.visibility = "visible"
                 cargoStatus.innerHTML = "Cargo mass exceeds limit."
             }
-      
+}
+
   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
     response.json().then(function(json){
         let missionTarget =  document.getElementById("missionTarget");
@@ -69,6 +70,7 @@ function submitForm(){
     });      
  });     
 
-document.getElementById("formSubmit").addEventListener("click", function(){
+let formSubmit = document.querySelector("button");
+formSubmit.addEventListener("click", function(){
     submitForm();
 });
