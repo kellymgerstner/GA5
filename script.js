@@ -23,13 +23,13 @@ function submitForm(){
  let fuelStatus = document.getElementById("fuelStatus");
  let cargoStatus = document.getElementById("cargoStatus");
 
-    if(pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
+    if(pilotName.value ==="" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value ===""){
         alert("All fields are required.");
     }
-    if(!isNaN(pilotName) || !isNaN(copilotName)){
+    if(!isNaN(pilotName.value) || !isNaN(copilotName.value)){
             alert("Please enter a valid name.");
     }
-    if(isNaN(fuelLevel)|| isNaN(cargoMass)){ 
+    if(isNaN(fuelLevel.value)|| isNaN(cargoMass.value)){ 
             alert("Please enter a number.");
     }
     
