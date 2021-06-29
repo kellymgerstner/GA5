@@ -15,23 +15,23 @@ window.addEventListener("load", function(){
 function submitForm(){
  let pilotName = document.querySelector("input[name = pilotName]");
  let copilotName = document.querySelector("input[name = copilotName]");
- let fuelLevel = document.querySelector("input[name = fuelLevel]");
- let cargoMass = document.querySelector("input[nme = cargoMass]");
+ let fuelLevel = Number(document.querySelector("input[name = fuelLevel]"));
+ let cargoMass = Number(document.querySelector("input[nme = cargoMass]"));
 
  let launchStatus = document.getElementById("launchStatus");
  let faultyItems = document.getElementById("faultyItems");
  let fuelStatus = document.getElementById("fuelStatus");
  let cargoStatus = document.getElementById("cargoStatus");
 
-    if (pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
+    if(pilotName ==="" || copilotName === "" || fuelLevel === "" || cargoMass ===""){
         alert("All fields are required.");
     }
-        if(typeof(pilotName) !== "string" || typeof(copilotName) !== "string"){
+    if(!isNaN(pilotName) || !isNaN(copilotName)){
             alert("Please enter a valid name.");
-        }
-            if (isNaN(fuelLevel)|| isNaN(cargoMass)){ 
-                alert("Please enter a number.");
-                }
+    }
+    if(isNaN(fuelLevel)|| isNaN(cargoMass)){ 
+            alert("Please enter a number.");
+    }
     
     document.getElementById("pilotStatus").innerHTML = `${pilotName}`;
     document.getElementById("copilotStatus").innerHTML = `${copilotName}`;
