@@ -6,30 +6,33 @@ window.addEventListener("load", function(){
  let form = document.querySelector("form");
  form.addEventListener("submit", function(event){
     event.preventDefault();
-    console.log("Form submission cancelled");
+    submitForm();
     });
  
-
-
 
 function submitForm(){
  let pilotName = document.querySelector("input[name = pilotName]");
  let copilotName = document.querySelector("input[name = copilotName]");
- let fuelLevel = Number(document.querySelector("input[name = fuelLevel]"));
- let cargoMass = Number(document.querySelector("input[nme = cargoMass]"));
+ let fuelLevel = document.querySelector("input[name = fuelLevel]");
+ let cargoMass = document.querySelector("input[name = cargoMass]");
 
  let launchStatus = document.getElementById("launchStatus");
  let faultyItems = document.getElementById("faultyItems");
  let fuelStatus = document.getElementById("fuelStatus");
  let cargoStatus = document.getElementById("cargoStatus");
 
-    if(pilotName.value ==="" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value ===""){
+ console.log(pilotName.value);
+ console.log(copilotName.value);
+ console.log(fuelLevel.value);
+ console.log(cargoMass.value);
+
+    if(pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === ""){
         alert("All fields are required.");
     }
     if(!isNaN(pilotName.value) || !isNaN(copilotName.value)){
             alert("Please enter a valid name.");
     }
-    if(isNaN(fuelLevel.value)|| isNaN(cargoMass.value)){ 
+    if(isNaN(Number(fuelLevel.value))|| isNaN(Number(cargoMass.value))){ 
             alert("Please enter a number.");
     }
     
@@ -39,6 +42,7 @@ function submitForm(){
     if(fuelLevel > 10000 && cargoMass < 10000){
         launchStatus.innerHTML = "Shuttle ready for launch."
         launchStatus.style.color = "green";
+        faultyItems.style.visibility = "visible"
       }
         if(fuelLevel < 10000){
             launchStatus.innerHTML = "Shuttle not ready for launch."
@@ -69,10 +73,5 @@ function submitForm(){
             </ol>
             <img src = "${json[4].image}">`
     });      
- });     
-
-let formSubmit = document.querySelector("button");
-formSubmit.addEventListener("click", function(){
-    submitForm();
-});
+ });    
 });
